@@ -1,7 +1,7 @@
 
 # Home Guard 
 Home Guard is a mobile application linked with an advanced facial recognition system to identify familiar family members. If the system does not recognize a face, it will not unlock the door unless it receives a notification from the mobile app, allowing the user to decide whether to grant access.
-
+ 
 ***The Mobile Application Contains:-***
 
 1. **Firebase Integration**:

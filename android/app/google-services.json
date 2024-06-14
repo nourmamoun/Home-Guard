@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "908642810097",
+    "project_id": "smart-ho-b25db",
+    "storage_bucket": "smart-ho-b25db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908642810097:android:f8f91959558c36b09ad150",
+        "android_client_info": {
+          "package_name": "com.example.smart_home"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLFroarvk36h6mf6SW94Of2f3pdTdvEoA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

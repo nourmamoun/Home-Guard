@@ -6,15 +6,34 @@ import 'package:smart_home/constants.dart';
 import 'package:smart_home/pages/AddMember.dart';
 import 'package:smart_home/widgets/ContainerCamer.dart';
 import 'package:smart_home/widgets/buttons.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class CameraPage extends StatelessWidget {
    CameraPage({super.key}){
     _stream = _reference.orderBy('uploaded_at',descending:true).snapshots();
    }
 
-CollectionReference _reference = FirebaseFirestore.instance.collection('images');
+final CollectionReference _reference = FirebaseFirestore.instance.collection('images');
   
   late Stream<QuerySnapshot> _stream;
+
+
+  Future<void> _deleteImage(Timestamp uploadedAt, String imageUrl) async {
+    try {
+      // Find the document by uploaded_at
+      QuerySnapshot querySnapshot = await _reference.where('uploaded_at', isEqualTo: uploadedAt).get();
+      if (querySnapshot.docs.isNotEmpty) {
+        // Delete image from Firebase Storage
+        await FirebaseStorage.instance.refFromURL(imageUrl).delete();
+        // Delete document from Firestore
+        await _reference.doc(querySnapshot.docs.first.id).delete();
+      }
+    } catch (e) {
+      print('Error deleting image: $e');
+    }
+  }
+
+  
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -80,18 +99,33 @@ CollectionReference _reference = FirebaseFirestore.instance.collection('images')
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, index) {
                     Map thisItem = items[index];
-                    return CameraContainer(
-                      height: height,
-                      width: width,
-                      image: thisItem['image'],
-                    );
-                  });
-               
-               
+                    Timestamp uploadedAt = thisItem['uploaded_at'];
+                     String imageUrl = thisItem['image'];
+                    return Slidable(
+                        key: ValueKey(uploadedAt),
+                        startActionPane: ActionPane(
+                          motion: const ScrollMotion(),
+                          children: [
+                            SlidableAction(
+                              onPressed: (context) => _deleteImage(uploadedAt, imageUrl),
+                              backgroundColor: Colors.red,
+                              foregroundColor: Colors.white,
+                              icon: Icons.delete,
+                              label: 'Delete',
+                            )
+                          ],
+                        ),
+                        child: CameraContainer(
+                          height: height,
+                          width: width,
+                          image: imageUrl,
+                        ),
+                      );
+                    },
+                  );
                 }
-                return Text("hi");
-
-              }
+                return Text("No data");
+              },
               
             ),
           ),

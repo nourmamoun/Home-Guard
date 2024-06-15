@@ -44,28 +44,48 @@ class SettingsPage extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
+             const SizedBox(height: 10,),
+
+            Container(
+              height: height/6,
+              width: width/2,
+              decoration: const BoxDecoration(
+                color: Color(0xffF0EBEB),
+                shape: BoxShape.circle
+              ),
+              child: Icon(Icons.person,size: height/7, color: Color.fromARGB(255, 99, 97, 97),)
+            ),
+            const SizedBox(height: 10,),
+            const Text('Nour Mamoun', style: TextStyle(
+              fontFamily: kFontFamily,
+              fontWeight: FontWeight.w700,
+              color: Color(kBlueButton),
+              fontSize: 18
+            ),),
+            const SizedBox(height: 10,),
+
             Padding(
-              padding:const EdgeInsets.only(top: 10,bottom: 2,left: 10,right: 10),
+              padding:const EdgeInsets.only(top: 10,bottom: 3,left: 10,right: 10),
               child: SettingsWidget(text: 'Account', height: height, onTap: (){}, width: width)
             ),
              Padding(
-              padding:const EdgeInsets.only(top: 2,bottom: 2,left: 10,right: 10),
+              padding:const EdgeInsets.only(top: 2,bottom: 3,left: 10,right: 10),
               child: SettingsWidget(text: 'Language', height: height, onTap: (){}, width: width)
             ),
             Padding(
-              padding:const EdgeInsets.only(top: 2,bottom: 2,left: 10,right: 10),
+              padding:const EdgeInsets.only(top: 2,bottom: 3,left: 10,right: 10),
               child: SettingsWidget(text: 'Dark Mood', height: height, onTap: (){}, width: width)
             ),
            const SizedBox(height: 20,),
              Padding(
-              padding:const EdgeInsets.only(top: 2,bottom: 2,left: 10,right: 10),
+              padding:const EdgeInsets.only(top: 2,bottom: 3,left: 10,right: 10),
               child: SettingsWidget(text: 'FAQS', height: height, onTap: (){}, width: width)
             ),
              Padding(
-              padding:const EdgeInsets.only(top: 2,bottom: 2,left: 10,right: 10),
+              padding:const EdgeInsets.only(top: 2,bottom: 3,left: 10,right: 10),
               child: SettingsWidget(text: 'Contact Us', height: height, onTap: (){}, width: width)
             ),
-           const SizedBox(height: 70,),
+           const SizedBox(height: 30,),
 
            const Center(
             child: Column(
@@ -80,10 +100,13 @@ class SettingsPage extends StatelessWidget {
                   color: Colors.grey,
                   fontFamily: kFontFamily,
                   fontSize: 10
-                ),)
+                ),),
+                
               ],
             ),
-           )
+           ),
+              const SizedBox(height: 70,),
+
            
         
           ],

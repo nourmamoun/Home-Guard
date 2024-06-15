@@ -155,10 +155,7 @@ class _AddMemberPageState extends State<AddMemberPage> {
              } catch (e) {
                
              }
-             
-            
-
-              
+                        
               },
               child: Container(
                 height: height/4,

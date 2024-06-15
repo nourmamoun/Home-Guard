@@ -25,7 +25,7 @@ Home Guard is a mobile application linked with an advanced facial recognition sy
    - Notification page to control the door
    - Add user data
    - Camera to show members
-   - Add member functionality for any new member
+   - Add or delete a member functionality for any new member
    - settings page
 
 
